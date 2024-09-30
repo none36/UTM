@@ -1,5 +1,4 @@
 name: Build
-uses: actions/setup-python@v5.2.0
 on:
   push:
     branches:
@@ -41,6 +40,8 @@ jobs:
       env:
         IS_SELF_HOSTED_RUNNER: ${{ vars.IS_SELF_HOSTED_RUNNER || (github.repository_owner == 'utmapp' && 'true') }}
       run: |
+      uses: actions/setup-python@v5.2.0
+        pip install six pyparsing
         echo "github-runner='$RUNNER_IMAGE'" >> $GITHUB_OUTPUT
         if [ "$IS_SELF_HOSTED_RUNNER" == "true" ]; then
           echo "runners=['self-hosted', 'macOS']" >> $GITHUB_OUTPUT
