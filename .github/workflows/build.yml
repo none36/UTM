@@ -53,7 +53,7 @@ jobs:
     strategy:
       matrix:
         arch: [arm64]
-        platform: [ios, ios_simulator, ios-tci, ios_simulator-tci, macos, visionos, visionos_simulator, visionos-tci, visionos_simulator-tci]
+        platform: [ios, ios-tci, macos]
         include:
           # x86_64 supported only for macOS and simulators
           - arch: x86_64
@@ -232,10 +232,7 @@ jobs:
           {platform: "ios-tci", scheme: "iOS-SE", mode: "ipa-se", name: "UTM-SE.ipa", path: "UTM SE.ipa"},
           {platform: "ios", scheme: "iOS", mode: "ipa-hv", name: "UTM-HV.ipa", path: "UTM.ipa"},
           {platform: "ios", scheme: "iOS", mode: "deb", name: "UTM.deb", path: "UTM.deb"},
-          {platform: "visionos", scheme: "iOS", mode: "ipa", name: "UTM-visionOS.ipa", path: "UTM.ipa"},
-          {platform: "visionos-tci", scheme: "iOS-SE", mode: "ipa-se", name: "UTM-SE-visionOS.ipa", path: "UTM SE.ipa"},
           {platform: "ios-tci", scheme: "iOS-Remote", mode: "ipa-remote", name: "UTM-Remote.ipa", path: "UTM Remote.ipa"},
-          {platform: "visionos-tci", scheme: "iOS-Remote", mode: "ipa-remote", name: "UTM-Remote-visionOS.ipa", path: "UTM Remote.ipa"},
         ]
     if: github.event_name == 'release' || github.event.inputs.test_release == 'true'
     steps:
