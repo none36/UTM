@@ -29,13 +29,13 @@ env:
 jobs:
   configuration:
     name: Setup configuration
+    uses: actions/setup-python@v5.2.0
     runs-on: ubuntu-latest
     outputs:
       runner: ${{ steps.checker.outputs.runners }}
       github-runner: ${{ steps.checker.outputs.github-runner }}
     steps:
     - name: Check for hosted runners
-      uses: actions/setup-python@v5.2.0
       id: checker
       shell: bash
       env:
