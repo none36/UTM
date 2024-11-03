@@ -57,6 +57,10 @@ jobs:
         platform: [ios, ios-tci, macos]
         include:
           # x86_64 supported only for macOS and simulators
+          - arch: x86_64
+            platform: macos
+          - arch: x86_64
+            platform: ios_simulator
     steps:
       - name: Checkout
         uses: actions/checkout@v3
