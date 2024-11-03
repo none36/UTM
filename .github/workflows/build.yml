@@ -54,7 +54,7 @@ jobs:
     strategy:
       matrix:
         arch: [arm64]
-        platform: [ios, ios-tci, macos]
+        platform: [ios]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -80,7 +80,7 @@ jobs:
         run: |
           brew uninstall cmake
           brew install bison pkg-config gettext glib-utils libgpg-error nasm make meson
-          pip3 install --user six pyparsing --break-system-packages
+          pip3 install --user six pyparsing setuptools --break-system-packages
           rm -f /usr/local/lib/pkgconfig/*.pc
       - name: Build Sysroot
         if: steps.cache-sysroot.outputs.cache-hit != 'true' || github.event.inputs.rebuild_sysroot == 'true'
